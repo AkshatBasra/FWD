@@ -1,0 +1,74 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    text-align: left;
+}
+header {
+    background: #333;
+    color: #87CEFA;
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 5px solid #FF5733;
+    position: relative;
+}
+header h2 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #FF5733; /* Different color for the header text */
+    animation: textAnimation 5s infinite alternate;
+}
+@keyframes textAnimation {
+    0% { color: #FF5733; }
+    100% { color: #87CEFA; }
+}
+.moving-text {
+    position: absolute;
+    width: 100%;
+    bottom: -20px;
+    left: 0;
+    text-align: center;
+    font-size: 1.2em;
+    color: #FF5733;
+    animation: moveText 10s linear infinite;
+}
+@keyframes moveText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.restaurant {
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background */
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+}
+.restaurant img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.restaurant:hover {
+    transform: scale(1.05);
+    background-color: #FEF2ED; /* Light golden background on hover */
+}
+.restaurant div {
+    color: #333; /* Text color */
+}
+.restaurant a {
+    color: #FF5733; /* Link color */
+    text-decoration: none;
+}
+.restaurant a:hover {
+    text-decoration: underline;
+}
