@@ -1,4 +1,5 @@
 import "./Item.css"
+const path = require("path");
 
 const Item = (props) => {
   return(

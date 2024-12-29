@@ -29,8 +29,60 @@ const Location = [
   },
   {
     name: "The Grand Village",
-
-  }
+    info: "A restaurant in Bengaluru, India that serves a variety of cuisines, including vegetarian, vegan, North Indian, South Indian, and Rajasthani.",
+    maps: "https://www.google.com/maps/dir/BMS+College+of+Engineering,+Bull+Temple+Road,+Basavanagudi,+Bengaluru,+Karnataka/Grand+Village,+3rd+Floor,+Gandhi+Bazaar+Main+Rd,+Above+Reliance+Trends,+Gandhi+Bazaar,+Basavanagudi,+Bengaluru,+Karnataka+560004/@12.9435106,77.5669308,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae158b11e34d2f:0x5f4adbdbab8bd80f!2m2!1d77.5668099!2d12.9416151!1m5!1m1!1s0x3bae15f2bf3c9f87:0x253a945376ff1e00!2m2!1d77.5720383!2d12.9445824!3e0?entry=ttu&g_ep=EgoyMDI0MTExMS4wIKXMDSoASAFQAw%3D%3D",
+    imageUrl: require("./Pics/Food/gv.jpg"),
+    category: "Food"
+  },
+  {
+    name: "Apna Dhaba",
+    info: "A North Indian restaurant in Basavanagudi, Bangalore that's known for its fast delivery, healthy food, and tasty presentation.",
+    maps: "https://www.google.com/maps/dir/BMS+College+of+Engineering,+Bull+Temple+Road,+Basavanagudi,+Bengaluru,+Karnataka/Apna+Dhaba+%7C+Taste+Of+Punjab+Pure+Veg,+Mount+Joy+Extension,+Hanumanthnagar,+Banashankari+1st+Stage,+Banashankari,+Bengaluru,+Karnataka+560019/@12.941313,77.5634912,17z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x3bae158b11e34d2f:0x5f4adbdbab8bd80f!2m2!1d77.5668099!2d12.9416151!1m5!1m1!1s0x3bae15ba1deb6697:0x5449322bb3265a46!2m2!1d77.5644487!2d12.9403745!3e0?entry=ttu&g_ep=EgoyMDI0MTExMS4wIKXMDSoASAFQAw%3D%3D",
+    imageUrl: require("./Pics/Food/ad.jpg"),
+    category: "Food"
+  },
+  {
+    name: "Domino's Pizza",
+    info: "A global pizza chain that offers pizza delivery, carryout, and dine-in services.",
+    maps: "https://maps.app.goo.gl/fdeVvhtMqknf6gyW7",
+    imageUrl: require("./Pics/Food/dominoes.jpg"),
+    category: "Food"
+  }/*,
+  {
+    name: "",
+    info: "",
+    maps: "",
+    imageUrl: require("./Pics/Food/"),
+    category: "Food"
+  },
+  {
+    name: "",
+    info: "",
+    maps: "",
+    imageUrl: require("./Pics/Food/"),
+    category: "Food"
+  },
+  {
+    name: "",
+    info: "",
+    maps: "",
+    imageUrl: require("./Pics/Food/"),
+    category: "Food"
+  },
+  {
+    name: "",
+    info: "",
+    maps: "",
+    imageUrl: require("./Pics/Food/"),
+    category: "Food"
+  },
+  {
+    name: "",
+    info: "",
+    maps: "",
+    imageUrl: require("./Pics/Food/"),
+    category: "Food"
+  }*/
 ]
 
 const getLocations = () => {

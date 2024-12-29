@@ -12,16 +12,17 @@ const MainPage = () => {
           <tbody>
           <tr>
             <td>
-              <div className="box">
-                <img src={require('./Pics/image 7.png')} height={169} width={294} alt="Long Trip Pic"/>
-                <p className="title"/>
-                <h2>LONG TRIP?</h2>
-                <p/>
-                <p>Fun things to do within 10 km</p>
-              </div>
+              <Link to={"/ShortTrip"}>
+                <div className="box">
+                  <img src={require('./Pics/image 7.png')} height={169} width={294} alt="Long Trip Pic"/>
+                  <p className="title"/>
+                  <h2>LONG TRIP?</h2>
+                  <p/>
+                  <p>Fun things to do within 10 km</p>
+                </div>
+              </Link>
             </td>
             <td>
-              <Link to="Restaurants.html"></Link>
               <div className="box">
                 <Link to={"/Food"}>
                   <img
@@ -39,13 +40,15 @@ const MainPage = () => {
               </div>
             </td>
             <td>
-              <div className="box">
-                <img src={require('./Pics/image 5.png')} height={169} width={293} alt="Day Out Pic"/>
-                <p className="title"/>
-                <h2>DAY OUT?</h2>
-                <p/>
-                <p>Places to visit during a long weekend</p>
-              </div>
+              <Link to={"/LongTrip"}>
+                <div className="box">
+                  <img src={require('./Pics/image 5.png')} height={169} width={293} alt="Day Out Pic"/>
+                  <p className="title"/>
+                  <h2>DAY OUT?</h2>
+                  <p/>
+                  <p>Places to visit during a long weekend</p>
+                </div>
+              </Link>
             </td>
           </tr>
           </tbody>
