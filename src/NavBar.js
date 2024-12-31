@@ -7,11 +7,11 @@ function NavBar() {
     return (
         <Navbar className="bg-body-tertiary">
             <Container>
-                <Navbar.Brand href="#home">TravOn</Navbar.Brand>
+                <Navbar.Brand href="/">TravOn</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        Signed in as: <a href="#login">Mark Otto</a>
+                        <a href="/Login">Login</a>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

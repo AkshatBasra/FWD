@@ -7,14 +7,14 @@ const MainPage = () => {
 
   return (
       <>
-        <CardImg src={require('./Pics/cola.jpeg.jpg')} className="img-fluid" alt="MainPageImage"/>
+        <CardImg src={process.env.PUBLIC_URL + '/Pics/cola.jpeg.jpg'} className="img-fluid" alt="MainPageImage"/>
         <table className="grid">
           <tbody>
           <tr>
             <td>
               <Link to={"/ShortTrip"}>
                 <div className="box">
-                  <img src={require('./Pics/image 7.png')} height={169} width={294} alt="Long Trip Pic"/>
+                  <img src={process.env.PUBLIC_URL + '/Pics/image 7.png'} height={169} width={294} alt="Long Trip Pic"/>
                   <p className="title"/>
                   <h2>LONG TRIP?</h2>
                   <p/>
@@ -26,7 +26,7 @@ const MainPage = () => {
               <div className="box">
                 <Link to={"/Food"}>
                   <img
-                      src={require('./Pics/image 6.png')}
+                      src={process.env.PUBLIC_URL + '/Pics/image 6.png'}
                       //src="./Pics/image 6.png"
                       height={181}
                       width={207}
@@ -42,7 +42,7 @@ const MainPage = () => {
             <td>
               <Link to={"/LongTrip"}>
                 <div className="box">
-                  <img src={require('./Pics/image 5.png')} height={169} width={293} alt="Day Out Pic"/>
+                  <img src={process.env.PUBLIC_URL + '/Pics/image 5.png'} height={169} width={293} alt="Day Out Pic"/>
                   <p className="title"/>
                   <h2>DAY OUT?</h2>
                   <p/>

@@ -6,6 +6,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Food from "./Food";
 import LongTrip from "./LongTrip";
 import ShortTrip from "./ShortTrip";
+import Register from "./Register";
+import Login from "./Login";
 
 function App() {
   return (
@@ -27,6 +29,12 @@ function App() {
                 }/>
                 <Route path="/ShortTrip" element={
                     <ShortTrip />
+                }/>
+                <Route path="/Register" element={
+                    <Register />
+                }/>
+                <Route path="/Login" element={
+                    <Login/>
                 }/>
             </Routes>
         </BrowserRouter>

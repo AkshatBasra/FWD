@@ -1,11 +1,12 @@
 import "./Item.css"
-const path = require("path");
+// const path = require("path");
 
 const Item = (props) => {
-  return(
+        console.log(process.env.PUBLIC_URL + props.Obj.imageUrl);
+    return(
       <div className="container">
           <div className="restaurant">
-              <img src={props.Obj.imageUrl} alt={props.Obj.name}/>
+              <img src={process.env.PUBLIC_URL + props.Obj.imageUrl} alt={props.Obj.name}/>
                   <div>
                       <strong>{props.Obj.name}</strong><br/>
                       {props.Obj.info}<br/>
