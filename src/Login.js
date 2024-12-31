@@ -18,7 +18,8 @@ const Login = () => {
         axios.post('http://localhost:5000/login', payload)
             .then(res => {
                 console.log(res);
-                navigate('/login');
+                localStorage.setItem('token', res.data.token);
+                navigate('/Dashboard');
             })
             .catch(err => {
                 console.error("Registration error:", err.response || err);

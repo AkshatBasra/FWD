@@ -1,52 +1,63 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt'); // Ensure bcrypt is used for password hashing
 const UsersModel = require('../models/Users');
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables
+
 const router = express.Router();
-const mongoose  = require('mongoose');
 
 // Secret key for JWT
-const JWT_SECRET = process.env.JWT_SECRET; // In a real app, store this in environment variables
+const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
     throw new Error('JWT_SECRET is not defined in environment variables.');
 }
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://Akshat:1BM23CS020@cluster0.bmfpm.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)//{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected: Login'))
-    .catch(err => console.log('MongoDB connection error:', err));
+    .catch(err => {
+        console.error('MongoDB connection error:', err);
+        process.exit(1); // Exit if unable to connect to MongoDB
+    });
 
-router.post(`/login`, async (req, res) => {
+// Login Route
+router.post('/login', async (req, res) => {
     const { username, password } = req.body;
+
+    // Validate input
     if (!username || !password) {
         return res.status(400).json({ error: 'Username and password are required' });
     }
 
     try {
-        // Find the user by username
+        // Find user by username
         const user = await UsersModel.findOne({ username });
 
-        // If user is not found
+        // If user not found
         if (!user) {
-            return res.status(401).json({ error: 'Invalid credentials' });
+            return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Compare the password with the hashed password stored in the database
-        const isMatch = await user.comparePassword(password);
-
-        // If the password doesn't match
+        // Verify password using bcrypt
+        const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).json({ error: 'Invalid credentials' });
+            return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // If authentication is successful, create a JWT token
-        const token = jwt.sign({ userId: user._id, username: user.username }, JWT_SECRET, { expiresIn: '1h' });
+        // Generate JWT token
+        const token = jwt.sign(
+            { userId: user._id, username: user.username },
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
 
-        // Send the token back to the client
+        // Send response with token
         res.status(200).json({ message: 'Login successful', token });
-
+        // localStorage.setItem('token', token);
     } catch (err) {
-        console.error('Login error:', err);
+        console.error('Login error:', err.message || err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });

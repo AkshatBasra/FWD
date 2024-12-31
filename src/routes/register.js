@@ -4,7 +4,7 @@ const router = express.Router();
 const UsersModel = require('../models/Users');
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://Akshat:1BM23CS020@cluster0.bmfpm.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB Connected: Register'))
     .catch(err => console.log('MongoDB connection error:', err));
 

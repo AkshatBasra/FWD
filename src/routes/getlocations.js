@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const router = express.Router();
 
 // Replace <username>, <password>, and <your-database> with your actual MongoDB URI details
-mongoose.connect('mongodb+srv://Akshat:1BM23CS020@cluster0.bmfpm.mongodb.net/test',)
+mongoose.connect(process.env.MONGO_URI,)
     .then(() => console.log('MongoDB Connected: Locations'))
     .catch(err => console.log(err));
 const Schema = mongoose.Schema;
@@ -18,7 +18,7 @@ const ItemSchema = new Schema({
 const Locations = mongoose.model('Locations', ItemSchema);
 
 router.get('/items', async (req, res) => {
-    const items = await Locations.find();
+    const items = await Locations.find({});
     res.json(items);
 });
 

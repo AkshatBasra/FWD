@@ -8,6 +8,7 @@ import LongTrip from "./LongTrip";
 import ShortTrip from "./ShortTrip";
 import Register from "./Register";
 import Login from "./Login";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
                 }/>
                 <Route path="/Login" element={
                     <Login/>
+                }/>
+                <Route path='/DashBoard' element={
+                    <Dashboard/>
                 }/>
             </Routes>
         </BrowserRouter>
