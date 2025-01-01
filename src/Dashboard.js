@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import './MainPage.css';
+import './Dashboard.css';
 import Item from "./Item";
 import {jwtDecode} from "jwt-decode";
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
-    const [items, setItems] = useState([]);
     const [favorites, setFavorites] = useState([]);
     const [loading, setLoading] = useState(true); // Add loading state to handle asynchronous token checks
-    const [favItems, setFavItems] = useState([]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -26,14 +25,9 @@ const Dashboard = () => {
     }, []);
 
     useEffect(() => {
-        if (!user) return; // Wait until `user` is set before fetching data
+        if (!user) return; // Fetch only when the user is available
 
         const token = localStorage.getItem('token');
-        if (!token) {
-            console.error("No token found. Please log in.");
-            return;
-        }
-
         fetch('http://localhost:5000/favoriteSearch', {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -45,30 +39,45 @@ const Dashboard = () => {
                 }
                 return response.json();
             })
-            .then((data) => setItems(data))
-            .catch((err) => console.error("Error fetching data: ", err));
-    }, [user]); // Fetch data only when `user` is set
+            .then((data) => {
+                // Filter results for the current user
+                console.log(data);
+                const userFavorites = data.filter(
+                    (favorite) => favorite.username === user.username
+                );
+                setFavorites(userFavorites);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error("Error fetching favorites:", err);
+                setLoading(false);
+            });
+    }, [user]);
 
-    useEffect(() => {
-        if (user && items.length > 0) {
-            const userFavorites = items.filter(item => item.username === user.username);
-            setFavorites(userFavorites);
-            console.log(userFavorites);
-        }
-
-
-    }, [user, items]);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/items')
-            .then(response => response.json())
-            .then(data => setItems(data))
-            .catch(err => console.error("Error fetching data: ", err));
-
-        const Favs = items.filter(item => item.name === favorites.locationName);
-        setFavItems(Favs);
-    }, []);
-
+    // Delete Operation
+    const handleRemoveFavorite = (name) => {
+        const token = localStorage.getItem('token');
+        console.log(name);
+        fetch(`http://localhost:5000/favorites/${name}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to remove favorite');
+                }
+                // Update the state to remove the favorite
+                setFavorites((prevFavorites) =>
+                    prevFavorites.filter((favorite) => favorite.name !== name)
+                );
+            })
+            .catch((err) => {
+                console.error("Error removing favorite:", err);
+            });
+    };
     if (loading) {
         return <p>Loading...</p>; // Show a loading message while waiting for token
     }
@@ -85,10 +94,13 @@ const Dashboard = () => {
             <div>
                 <strong>Favorites</strong>
                 <br />
-                {favItems.length > 0 ? (
-                    favItems.map((item, index) => (
+                {favorites.length > 0 ? (
+                    favorites.map((item, index) => (
                         <div key={index}>
-                            <Item Obj={item} />
+                            <Item Obj={item}/>
+                            <button onClick={() => handleRemoveFavorite(item.name)}>
+                                Remove from Favorites
+                            </button>
                         </div>
                     ))
                 ) : (

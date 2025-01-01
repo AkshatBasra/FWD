@@ -1,19 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 // User schema definition
 const FavoritesSchema = new Schema({
     username: String,
     locationName: String,
 });
 
-// Pre-save hook to hash password
-FavoritesSchema.pre('save', async function (next) {
-
-});
-
-
-const FavoritesModel = mongoose.model('Favorites', FavoritesSchema);
+let FavoritesModel;
+if (mongoose.models.Favorites) {
+    FavoritesModel = mongoose.models.Favorites; // Use the already compiled model if it exists
+} else {
+    FavoritesModel = mongoose.model('Favorites', FavoritesSchema); // Otherwise, compile a new model
+}
 
 module.exports = FavoritesModel;
