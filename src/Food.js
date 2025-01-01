@@ -13,6 +13,7 @@ const Food = () => {
             .then(data => setItems(data))
             .catch(err => console.error("Error fetching data: ", err));
     }, []);
+    console.log(items);
     return (
       <>
           <div>

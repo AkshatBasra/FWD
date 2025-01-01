@@ -1,27 +1,26 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const router = express.Router();
+const LocationsModel = require("../models/locations.js");
 
-// Replace <username>, <password>, and <your-database> with your actual MongoDB URI details
 mongoose.connect(process.env.MONGO_URI,)
     .then(() => console.log('MongoDB Connected: Locations'))
     .catch(err => console.log(err));
-const Schema = mongoose.Schema;
-const ItemSchema = new Schema({
-    name: String,
-    info: String,
-    maps: String,
-    imageUrl: String,
-    category: String
-});
-
-const Locations = mongoose.model('Locations', ItemSchema);
+// const Schema = mongoose.Schema;
+// const ItemSchema = new Schema({
+//     name: String,
+//     info: String,
+//     maps: String,
+//     imageUrl: String,
+//     category: String
+// });
+//
+// const LocationsModel = mongoose.model('Locations', ItemSchema);
 
 router.get('/items', async (req, res) => {
-    const items = await Locations.find({});
+    const items = await LocationsModel.find({});
     res.json(items);
+    console.log(items);
 });
-
-
 
 module.exports = router;

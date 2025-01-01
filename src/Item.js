@@ -1,8 +1,11 @@
 import "./Item.css"
 import {useState} from "react";
 import axios from "axios";
+import {Button} from "react-bootstrap";
+import {jwtDecode} from "jwt-decode";
 
 const Item = (props) => {
+    // const [user, setUser] = useState({});
     const [isFavorite, setIsFavorite] = useState(false);
     const locationName = props.Obj.name;
     // const handleChange = () => {
@@ -14,8 +17,9 @@ const Item = (props) => {
     const handleChange = () => {
         setIsFavorite(!isFavorite);
         const token = localStorage.getItem('token'); // Retrieve token from localStorage
-        console.log(token);
-        console.log(locationName);
+        const decodedUser = jwtDecode(token);
+        // setUser(decodedUser); // Set user state with decoded token data
+        const username = decodedUser?.username;
         if (!token) {
             console.error("No token found. Please log in first.");
             return;
@@ -23,7 +27,7 @@ const Item = (props) => {
 
         axios.post(
             `http://localhost:5000/favorites`,
-            { locationName },
+            { locationName, username },
             {
                 headers: {
                     Authorization: `Bearer ${token}`, // Include token in Authorization header
@@ -48,7 +52,7 @@ const Item = (props) => {
                   <a href={props.Obj.maps}>
                       Google Maps
                   </a><br/>
-                  <input type={'checkbox'} onChange={handleChange}/> Favorite
+                  <Button onClick={handleChange}>Add to Favorites</Button>
               </div>
           </div>
       </div>
