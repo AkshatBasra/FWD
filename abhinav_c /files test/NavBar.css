@@ -1,0 +1,28 @@
+/* Custom Orange Color */
+.text-orange {
+    color: #FFA500; /* Orange color */
+  }
+  
+  /* Button Color */
+  .btn-outline-warning {
+    border-color: #FFA500;
+    color: #FFA500;
+  }
+  
+  .btn-outline-warning:hover {
+    background-color: #FFA500;
+    color: #fff;
+  }
+  
+  /* Navbar and other text colors */
+  .nav-link, .navbar-brand, .navbar-toggler-icon {
+    color: #fff !important;
+  }
+  
+  .nav-link:hover, .navbar-toggler-icon:hover {
+    color: #FFA500 !important;
+  }
+  
+  .navbar-nav .nav-link {
+    padding-right: 20px;
+  }
