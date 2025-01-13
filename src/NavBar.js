@@ -11,7 +11,8 @@ function NavBar() {
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        <a href="/Login">Login</a>
+                        <a href="/Login">Login</a>&nbsp;&nbsp;&nbsp;
+                        <a href="/Dashboard">Dashboard</a>
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

@@ -8,6 +8,9 @@ const MainPage = () => {
   return (
       <>
         <CardImg src={process.env.PUBLIC_URL + '/Pics/cola.jpeg.jpg'} className="img-fluid" alt="MainPageImage"/>
+
+        {/*Text For Homepage*/}
+
         <table className="grid">
           <tbody>
           <tr>
