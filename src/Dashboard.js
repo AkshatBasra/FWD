@@ -98,9 +98,9 @@ const Dashboard = () => {
                     favorites.map((item, index) => (
                         <div key={index}>
                             <Item Obj={item}/>
-                            <button onClick={() => handleRemoveFavorite(item.name)}>
-                                Remove from Favorites
-                            </button>
+                            {/*<button onClick={() => handleRemoveFavorite(item.name)}>*/}
+                            {/*    Remove from Favorites*/}
+                            {/*</button>*/}
                         </div>
                     ))
                 ) : (

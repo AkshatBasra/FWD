@@ -62,8 +62,9 @@ body {
     margin: 0;
     padding: 0;
     /*background-image: url("cola.jpeg.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;*/
+    background-repeat: no-repeat;*/
+    background-size: 100%;
+    background-color: #ffecd2;
 }
 
 #Header {
