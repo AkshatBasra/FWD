@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
     .catch(err => console.error('MongoDB connection error:', err));
 
 // Route to add a favorite
-router.post('/favorites', authenticateToken, async (req, res) => {
+router.post('/addfav', authenticateToken, async (req, res) => {
     const {locationName, username} = req.body;
 
     if (!locationName) {
@@ -44,12 +44,17 @@ router.post('/favorites', authenticateToken, async (req, res) => {
 
 // Delete operation
 
-router.delete('/favorites/:name', authenticateToken, async (req, res) => {
-    const { name } = req.params; // Get the favorite ID from the URL parameters
-
+router.post('/delfav', authenticateToken, async (req, res) => {
+    // const { name } = req.params; // Get the favorite ID from the URL parameters
+    const { locationName, username } = req.body;
     try {
         // Find and delete the favorite based on user and location
-        const result = await FavoritesModel.findOneAndDelete({ username: username, locationName:name });
+        const result = await FavoritesModel.findOneAndDelete(
+            {
+                username: username,
+                locationName:locationName
+            }
+        );
 
         if (!result) {
             return res.status(404).json({ error: 'Favorite not found or user not authorized' });

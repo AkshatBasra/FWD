@@ -20,7 +20,6 @@ mongoose.connect(process.env.MONGO_URI,)
 router.get('/items', async (req, res) => {
     const items = await LocationsModel.find({});
     res.json(items);
-    console.log(items);
 });
 
 module.exports = router;

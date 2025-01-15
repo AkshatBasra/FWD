@@ -1,0 +1,31 @@
+.star-rating {
+    display: flex;
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    font-size: 30px;
+    color: #d3d3d3; /* Default grey color for empty stars */
+}
+
+/* Full star */
+.star.filled {
+    color: #f4a261; /* Full star is yellow */
+}
+
+/* Half-filled star */
+.star.half-filled {
+    background: linear-gradient(to right, #f4a261 50%, #d3d3d3 50%); /* Half yellow and half grey */
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 30px;
+}
+
+.star.no-filled {
+    background: linear-gradient(to right, #d3d3d3 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Optional: add some spacing between the stars */
+.star + .star {
+    margin-left: 5px;
+}

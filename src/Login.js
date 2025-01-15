@@ -33,7 +33,7 @@ const Login = () => {
     return (
         <Container
             className="d-flex justify-content-center align-items-center"
-            style={{ minWidth:'100vh', minHeight: '100vh', backgroundColor: '#0a0a0a' }} // Jet black background
+            style={{ minWidth:'100%', minHeight: '100vh', backgroundColor: '#0a0a0a' }} // Jet black background
         >
             <Row className="w-100">
                 <Col md={8} lg={6} sm={12}> {/* Adjusted column width for better layout */}
@@ -97,7 +97,7 @@ const Login = () => {
 
                             {/* Already have an account? Link */}
                             <div className="text-center mt-3">
-                                <span className="text-white">Already have an account? </span>
+                                <span className="text-white">Don't have an account? </span>
                                 <Button variant="link" className="p-0" href="/Register" style={{ color: '#FFEB3B' }}>
                                     Sign In
                                 </Button>
