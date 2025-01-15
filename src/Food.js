@@ -1,8 +1,6 @@
 import {useState, useEffect} from "react";
 import "./Food.css";
-import Item from "./Item";
-// import getLocations from "./Locations.js";
-// const Locations = getLocations();
+import FoodItem from "./FoodItem";
 
 const Food = () => {
     const [items, setItems] = useState([]);
@@ -22,7 +20,7 @@ const Food = () => {
           {items.map((item, index) => (
               <div key={index}>
                   {item.category === "Food" ? (
-                    <Item Obj={item}/>
+                    <FoodItem Obj={item}/>
                   ): null}
               </div>
           ))}

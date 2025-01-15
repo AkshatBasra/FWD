@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import './MainPage.css';
 import './Dashboard.css';
-import Item from "./Item";
+import FavItem from "./FavItem";
 import {jwtDecode} from "jwt-decode";
 
 const Dashboard = () => {
@@ -97,7 +97,7 @@ const Dashboard = () => {
                 {favorites.length > 0 ? (
                     favorites.map((item, index) => (
                         <div key={index}>
-                            <Item Obj={item}/>
+                            <FavItem Obj={item}/>
                             {/*<button onClick={() => handleRemoveFavorite(item.name)}>*/}
                             {/*    Remove from Favorites*/}
                             {/*</button>*/}

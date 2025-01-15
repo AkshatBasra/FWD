@@ -30,7 +30,6 @@ const MainPage = () => {
                 <Link to={"/Food"}>
                   <img
                       src={process.env.PUBLIC_URL + '/Pics/image 6.png'}
-                      //src="./Pics/image 6.png"
                       height={181}
                       width={207}
                       alt="Restaurants Pic"
