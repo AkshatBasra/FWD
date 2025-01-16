@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import "./Food.css";
 import FoodItem from "./FoodItem";
+import {CardImg} from "react-bootstrap";
 
 const Food = () => {
     const [items, setItems] = useState([]);
@@ -13,19 +14,22 @@ const Food = () => {
     }, []);
     // console.log(items);
     return (
-      <>
-          <div>
-              <h1 className={"header"}>Restaurants Near BMSCE</h1>
-          </div>
-          {items.map((item, index) => (
-              <div key={index}>
-                  {item.category === "Food" ? (
-                    <FoodItem Obj={item}/>
-                  ): null}
-              </div>
-          ))}
-      </>
-  )
-}
+        <>
+            {/*<div className='back-img'>*/}
+            {/*    <CardImg src={process.env.PUBLIC_URL + '/Pics/cola2.jpg'} className="img-fluid" alt="MainPageImage"/>*/}
+            {/*</div>*/}
+                {/*<div>*/}
+                {/*    <h1 className={"header"}>Restaurants Near BMSCE</h1>*/}
+                {/*</div>*/}
+                {items.map((item, index) => (
+                    <div key={index}>
+                        {item.category === "Food" ? (
+                            <FoodItem Obj={item}/>
+                        ) : null}
+                    </div>
+                ))}
+            </>
+            )
+            }
 
-export default Food;
+            export default Food;

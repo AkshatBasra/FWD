@@ -18,18 +18,27 @@ function App() {
             <Routes>
                 <Route path="/" element={
                     <>
-                    <NavBar />
-                    <MainPage />
-                </>
+                        <NavBar Heading='TravOn'/>
+                        <MainPage />
+                    </>
                 } />
                 <Route path="/Food" element={
-                    <Food />
+                    <>
+                        <NavBar Heading='Restaurants Near BMS'/>
+                        <Food />
+                    </>
                 } />
                 <Route path="/LongTrip" element={
-                    <LongTrip />
+                    <>
+                        <NavBar Heading='Long Trip Destinations'/>
+                        <LongTrip />
+                    </>
                 }/>
                 <Route path="/ShortTrip" element={
-                    <ShortTrip />
+                    <>
+                        <NavBar Heading='Short Trip Destinations'/>
+                        <ShortTrip />
+                    </>
                 }/>
                 <Route path="/Register" element={
                     <Register />
@@ -38,7 +47,10 @@ function App() {
                     <Login/>
                 }/>
                 <Route path='/DashBoard' element={
-                    <Dashboard/>
+                    <>
+                        <NavBar Heading='DashBoard'/>
+                        <Dashboard/>
+                    </>
                 }/>
             </Routes>
         </BrowserRouter>

@@ -1,0 +1,70 @@
+/* Import the Ragitta font */
+@import url("https://fonts.googleapis.com/css2?family=Ragilla:wght@400&display=swap");
+
+/* Animation for the brand name */
+.animated-brand {
+  font-family: "Ragitta", cursive;
+  font-size: 1.8rem;
+  color: white;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.15em solid orange; /* Optional typing cursor effect */
+  animation: typing 2s steps(15, end), blink-caret 0.5s step-end infinite;
+}
+
+/* Typing Effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 6ch; /* Length of the word "Travon" */
+  }
+}
+
+/* Blinking Cursor Effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: white;
+  }
+}
+
+/* Home Button Hover Effect */
+.home-button svg {
+  transition: fill 0.3s ease;
+}
+
+.home-button:hover svg {
+  fill: orange;
+}
+
+/* Login Button Hover Effect */
+.login-button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: orange;
+  color: white;
+}
+
+.dropdown {
+  /*position: absolute;*/
+}
+
+.dropdown-menu {
+  z-index: 1050; /* Ensures the dropdown appears above other elements */
+  margin-top: 5px; /* Adjusts spacing from the button */
+  position: absolute !important; /* Forces absolute positioning */
+}
+
+.navbar,
+.container {
+  overflow: visible !important;
+  position: relative; /* Ensure dropdown aligns properly */
+}
