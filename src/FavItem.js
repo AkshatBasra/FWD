@@ -3,6 +3,7 @@ import {useState} from "react";
 import axios from "axios";
 import {Button} from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
+import StarRating from "./Rating";
 
 const FavItem = ({Obj}) => {
     // const [user, setUser] = useState({});
@@ -36,6 +37,7 @@ const FavItem = ({Obj}) => {
                 console.error("Error saving favorite:", err.response?.data || err.message);
             });
     };
+    console.log(Obj.name);
 
     return(
         <div className="container">
@@ -44,22 +46,33 @@ const FavItem = ({Obj}) => {
                 <div>
                     <strong>{Obj.name}</strong><br/>
                     {Obj.info}<br/>
+                    {Obj.rating != null ? (
+                        <>
+                        Rating: {Obj.rating}
+                        <StarRating rating={Obj.rating}/>
+                        </>
+                    ) : null}
+
                     {Obj.link.maps != null ? (
                         <a href={Obj.link.maps}>
                             Google Maps
                         </a>
-                    ):null}<br/>
+                    ) : null}<br/>
                     {Obj.link.hotel != null ? (
-                        <a href={Obj.link.hotel}>
-                            Google Maps
-                        </a>
-                    ):null}<br/>
-                    {/*{Obj.link.linkfield != null ? (*/}
-                    {/*    <a href={Obj.link.linkfield}>*/}
-                    {/*        Google Maps*/}
-                    {/*    </a>*/}
-                    {/*):null}<br/>*/}
-                    <Button variant={"danger"} onClick={handleChange}>Remove from Favorites</Button>
+                        <>
+                            <a href={Obj.link.hotel}>
+                                Hotels Nearby
+                            </a><br/>
+                        </>
+                    ):null}
+                    {Obj.link.food != null ? (
+                        <>
+                            <a href={Obj.link.food}>
+                                Restaurants Nearby
+                            </a><br/>
+                        </>
+                    ):null}
+                    {/*<Button variant={"danger"} onClick={handleChange}>Remove from Favorites</Button>*/}
                 </div>
             </div>
         </div>

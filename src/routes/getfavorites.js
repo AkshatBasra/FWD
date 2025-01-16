@@ -23,9 +23,10 @@ router.get('/favoriteSearch', async (req, res) => {
                 $project: {
                     _id: 1,
                     username: 1,
-                    name: 1,
+                    name: "$locationDetails.name",
                     info: "$locationDetails.info", // Assuming you want location's info
-                    maps: "$locationDetails.maps", // Assuming you want location's maps
+                    link: "$locationDetails.link", // Assuming you want location's maps
+                    rating: "$locationDetails.rating",
                     imageUrl: "$locationDetails.imageUrl", // Assuming you want location's imageUrl
                     category: "$locationDetails.category" // Assuming you want location's category
                 },

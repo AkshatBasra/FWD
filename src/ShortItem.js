@@ -3,6 +3,7 @@ import {useState} from "react";
 import axios from "axios";
 import {Button} from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
+import StarRating from "./Rating";
 
 const ShortItem = ({Obj}) => {
     // const [user, setUser] = useState({});
@@ -43,21 +44,27 @@ const ShortItem = ({Obj}) => {
                 <div>
                     <strong>{Obj.name}</strong><br/>
                     {Obj.info}<br/>
+                    {/*Rating: {Obj.rating}*/}
+                    {/*<StarRating rating={Obj.rating} />*/}
                     {Obj.link.maps != null ? (
                         <a href={Obj.link.maps}>
                             Google Maps
                         </a>
                     ):null}<br/>
                     {Obj.link.hotel != null ? (
+                        <>
                         <a href={Obj.link.hotel}>
-                            Hotels
-                        </a>
-                    ):null}<br/>
-                    {/*{Obj.link.maps != null ? (*/}
-                    {/*    <a href={Obj.link.maps}>*/}
-                    {/*        Google Maps*/}
-                    {/*    </a>*/}
-                    {/*):null}<br/>*/}
+                            Hotels Nearby
+                        </a><br/>
+                        </>
+                    ):null}
+                    {Obj.link.food != null ? (
+                        <>
+                        <a href={Obj.link.food}>
+                            Restaurants Nearby
+                        </a><br/>
+                        </>
+                    ):null}
                     <Button onClick={handleChange}>Add to Favorites</Button>
                 </div>
             </div>

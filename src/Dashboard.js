@@ -3,6 +3,7 @@ import './MainPage.css';
 import './Dashboard.css';
 import FavItem from "./FavItem";
 import {jwtDecode} from "jwt-decode";
+import {CardImg} from "react-bootstrap";
 
 const Dashboard = () => {
     const [user, setUser] = useState(null);
@@ -55,29 +56,29 @@ const Dashboard = () => {
     }, [user]);
 
     // Delete Operation
-    const handleRemoveFavorite = (name) => {
-        const token = localStorage.getItem('token');
-        console.log(name);
-        fetch(`http://localhost:5000/favorites/${name}`, {
-            method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Failed to remove favorite');
-                }
-                // Update the state to remove the favorite
-                setFavorites((prevFavorites) =>
-                    prevFavorites.filter((favorite) => favorite.name !== name)
-                );
-            })
-            .catch((err) => {
-                console.error("Error removing favorite:", err);
-            });
-    };
+    // const handleRemoveFavorite = (name) => {
+    //     const token = localStorage.getItem('token');
+    //     console.log(name);
+    //     fetch(`http://localhost:5000/favorites/${name}`, {
+    //         method: 'DELETE',
+    //         headers: {
+    //             Authorization: `Bearer ${token}`,
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //         .then((response) => {
+    //             if (!response.ok) {
+    //                 throw new Error('Failed to remove favorite');
+    //             }
+    //             // Update the state to remove the favorite
+    //             setFavorites((prevFavorites) =>
+    //                 prevFavorites.filter((favorite) => favorite.name !== name)
+    //             );
+    //         })
+    //         .catch((err) => {
+    //             console.error("Error removing favorite:", err);
+    //         });
+    // };
     if (loading) {
         return <p>Loading...</p>; // Show a loading message while waiting for token
     }
@@ -87,13 +88,23 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="dashboard">
-            <strong>
+        <>
+            <div className='back-img'>
+            <CardImg src={process.env.PUBLIC_URL + '/Pics/cola2.jpg'} className="img-fluid" alt="MainPageImage"/>
+
+            <strong className="title-text">
                 Welcome, {user.username}
             </strong>
-            <div>
-                <strong>Favorites</strong>
-                <br />
+            </div>
+            <div className="dashboard main-text">
+
+
+                {/*Picture*/}
+
+                <p className='main-text'>
+                    <strong>Favorites</strong>
+                    <br/>
+                </p>
                 {favorites.length > 0 ? (
                     favorites.map((item, index) => (
                         <div key={index}>
@@ -106,8 +117,9 @@ const Dashboard = () => {
                 ) : (
                     <p>No favorites found.</p>
                 )}
+
             </div>
-        </div>
+        </>
     );
 };
 
