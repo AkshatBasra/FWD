@@ -1,7 +1,6 @@
 import "./Item.css";
 import {useState} from "react";
 import axios from "axios";
-import {Button} from "react-bootstrap";
 import {jwtDecode} from "jwt-decode";
 import StarRating from "./Rating";
 
